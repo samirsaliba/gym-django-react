@@ -22,7 +22,7 @@ class PlanoSerializer(serializers.ModelSerializer):
 
 class ExameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Plano
+        model = Exame
         fields = '__all__'
 
 class MatriculaPlanoSerializer(serializers.ModelSerializer):

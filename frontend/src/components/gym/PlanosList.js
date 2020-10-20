@@ -10,7 +10,7 @@ class PlanosList extends Component {
 
   render() {
     return (
-      <table>
+      <table className='table'>
         <thead>
           <tr>
             <th scope="col">Modalidade</th>

@@ -8,11 +8,6 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import history from '../history';
 
-import ExamesList from './gym/ExamesList';
-import MatriculaPlanosList from './gym/MatriculaPlanosList';
-import MatriculaTurmasList from './gym/MatriculaTurmasList';
-
-
 import LoginForm from './auth/LoginForm';
 import PrivateRoute from './common/PrivateRoute';
 import { loadUser } from '../actions/auth';
@@ -20,6 +15,10 @@ import { loadUser } from '../actions/auth';
 
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+  
   render() {
     return (
       // <Provider store={store}>
@@ -31,9 +30,9 @@ class App extends Component {
           <Header />
           <Switch>
             <PrivateRoute exact path='/' component={Dashboard} />
-            <Route exact path='/exames/:id' component={ExamesList} />
-            <Route exact path='/turmas/:id' component={MatriculaPlanosList} />
-            <Route exact path='/planos/:id' component={MatriculaTurmasList} />
+            {/* <Route exact path='/' component={ExamesList} />
+            <Route exact path='/' component={MatriculaPlanosList} />
+            <Route exact path='/' component={MatriculaTurmasList} /> */}
             <Route exact path='/login' component={LoginForm} />
           </Switch>
         </Router>

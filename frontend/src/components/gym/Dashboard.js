@@ -10,15 +10,14 @@ import ModalidadeCreate from './ModalidadeCreate'; // added
 class Dashboard extends Component {
   render() {
     return (
-      <div className='ui container'>
+      <div>
         <ModalidadeList />
         <PlanosList />
 
+        <ExamesList />
         <MatriculaPlanosList />
         <MatriculaTurmasList />
-        <ExamesList />
-        
-
+       
         {/* <div>Modalidade Create Form</div>
         <ModalidadeCreate />  */}
       </div>

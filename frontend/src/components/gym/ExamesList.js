@@ -1,5 +1,4 @@
 
-import { divide } from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getExames } from '../../actions/gym';
@@ -11,7 +10,8 @@ class ExameList extends Component {
 
   render() {
     return (
-        this.props.exames.map(exame => (
+      <div>
+        {this.props.exames.map(exame => (
             <ul className="list-group" key={exame.id}>
                 <li className="list-group-item">{exame.massa}</li>
                 <li className="list-group-item">{exame.altura}</li>
@@ -19,9 +19,11 @@ class ExameList extends Component {
                 <li className="list-group-item">{exame.pressao_diastolica}</li>
                 <li className="list-group-item">{exame.percentual_gordura}</li>
                 <li className="list-group-item">{exame.percentual_massa_magra}</li>
-                <li className="list-group-item">{exame.habilitado}</li>
+                <li className="list-group-item">{exame.imc}</li>
             </ul>
-     )));
+          ))
+        }</div>
+    );
     }
   }
 

@@ -10,11 +10,16 @@ class MatriculaPlanosList extends Component {
 
   render() {
     return (
-      <ul className="list-group list-group-horizontal">
-        {this.props.matricula_planos.map(matricula_plano => (
-            <li className="list-group-item" key={matricula_plano.id}>{matricula_plano.tipo}</li>
+      <div>
+        {this.props.matricula_planos.map(plano => (
+          <ul className="list-group" key={plano.id}>
+            <li className="list-group-item" >{plano.modalidade}</li>
+            <li className="list-group-item">{plano.vezes_por_semana}</li>
+            <li className="list-group-item">{plano.tipo}</li>
+            <li className="list-group-item" >{plano.valor}</li>
+            </ul>
         ))}
-      </ul>
+      </div>
     );
   }
 }

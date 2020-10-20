@@ -10,11 +10,15 @@ class MatriculaTurmasList extends Component {
 
   render() {
     return (
-      <ul className="list-group list-group-horizontal">
-        {this.props.matricula_turmas.map(matricula_turma => (
-            <li className="list-group-item" key={matricula_turma.id}>{matricula_turma.tipo}</li>
+      <div>
+        {this.props.matricula_turmas.map(turma => (
+          <ul className="list-group" key={turma.id}>
+            <li className="list-group-item" >{turma.modalidade}</li>
+            <li className="list-group-item">{turma.dia}</li>
+            <li className="list-group-item">{turma.horario}</li>
+          </ul>
         ))}
-      </ul>
+      </div>
     );
   }
 }
