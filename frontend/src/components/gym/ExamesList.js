@@ -33,13 +33,3 @@ export default connect(
   mapStateToProps,
   { getExames }
 )(ExameList);
-
-// cliente = models.ForeignKey(Cliente, related_name="exames", on_delete=models.CASCADE)
-// massa = models.DecimalField(max_digits=5, decimal_places=2)
-// altura = models.DecimalField(max_digits=3, decimal_places=2)
-// pressao_sistolica = models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(200)])
-// pressao_diastolica = models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(200)])
-// percentual_gordura = models.DecimalField(max_digits=4, decimal_places=2)
-// percentual_massa_magra = models.DecimalField(max_digits=4, decimal_places=2)
-// imc = models.DecimalField(max_digits=3, decimal_places=1)
-// habilitado = models.BooleanField()
