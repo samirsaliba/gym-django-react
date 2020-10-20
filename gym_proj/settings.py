@@ -31,9 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig', # added
     'frontend.apps.FrontendConfig',  # added
     'gym_app.apps.GymAppConfig',  # added
     'rest_framework',  # added
+    'knox', #added
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +45,9 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {  # added
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny'
-    ],
+     'DEFAULT_AUTHENTICATION_CLASSES': (  # added
+        'knox.auth.TokenAuthentication',
+    ),
     'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S",
 }
 

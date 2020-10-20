@@ -98,7 +98,7 @@ class Plano(models.Model):
 
 class MatriculaPlano(models.Model):
     
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, related_name="planos", on_delete=models.CASCADE)
     plano = models.ForeignKey(Plano, on_delete=models.CASCADE)
     
     class Meta:
@@ -110,7 +110,7 @@ class MatriculaPlano(models.Model):
 
 
 class MatriculaTurma(models.Model):
-    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, related_name="turmas", on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
     class Meta:
@@ -121,7 +121,7 @@ class MatriculaTurma(models.Model):
 
 
 class Exame(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, related_name="exames", on_delete=models.CASCADE)
     massa = models.DecimalField(max_digits=5, decimal_places=2)
     altura = models.DecimalField(max_digits=3, decimal_places=2)
     pressao_sistolica = models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(200)])

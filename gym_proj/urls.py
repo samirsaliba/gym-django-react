@@ -20,4 +20,5 @@ urlpatterns = [
     path('', include('frontend.urls')),
     path('api/', include('gym_app.api.urls')),
     path('admin/', admin.site.urls),
+    path('api/auth/', include('accounts.api.urls')),
 ]
