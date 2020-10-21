@@ -10,28 +10,26 @@ class MatriculaPlanosList extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.matricula_planos.map(plano => (
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  Meus Planos
+      <div className="card">
+        <div className="card-header" id="headingTwo">
+          <h5 className="mb-0">
+            <button className="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              Meus Planos
                 </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                <ul className="list-group" key={plano.id}>
-                  <li className="list-group-item" >{plano.modalidade}</li>
-                  <li className="list-group-item">{plano.vezes_por_semana}</li>
-                  <li className="list-group-item">{plano.tipo}</li>
-                  <li className="list-group-item" >{plano.valor}</li>
-                </ul>
-              </div>
-            </div>
+          </h5>
+        </div>
+        <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div className="card-body">
+            {this.props.matricula_planos.map(obj => (
+              <ul className="list-group" key={'plano'+obj.id}>
+                <li className="list-group-item" >{obj.plano__modalidade__tipo}</li>
+                <li className="list-group-item">{obj.plano__vezes_por_semana}</li>
+                <li className="list-group-item">{obj.plano__tipo}</li>
+                <li className="list-group-item" >{obj.plano__valor}</li>
+              </ul>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     );
   }

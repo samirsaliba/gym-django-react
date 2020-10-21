@@ -11,30 +11,33 @@ class MatriculaTurmasList extends Component {
   render() {
     return (
       <div>
-        {this.props.matricula_turmas.map(turma => (
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  Minhas Turmas
+        <div className="card">
+          <div className="card-header" id="headingThree">
+            <h5 className="mb-0">
+              <button className="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                Minhas Turmas
               </button>
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                <ul className="list-group" key={turma.id}>
-                  <li className="list-group-item" >{turma.modalidade}</li>
-                  <li className="list-group-item">{turma.dia}</li>
-                  <li className="list-group-item">{turma.horario}</li>
-                </ul>
-              </div>
+            </h5>
+          </div>
+          <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div className="card-body">
+              <ul className="list-group" >
+                {this.props.matricula_turmas.map(obj => (
+                <div key={'turma' + obj.id}>
+                  <li className="list-group-item" >{obj.turma__modalidade__tipo}</li>
+                  <li className="list-group-item">{obj.turma__dia}</li>
+                  <li className="list-group-item">{obj.turma__horario}</li>
+                  </div>  
+                ))}
+              </ul>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     );
   }
 }
+
 
 const mapStateToProps = state => ({
   matricula_turmas: Object.values(state.matricula_turmas)

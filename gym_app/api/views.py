@@ -2,7 +2,7 @@ from rest_framework import viewsets, permissions
 
 from .serializers import (
     ModalidadeSerializer, TurmaSerializer, PlanoSerializer, ExameSerializer,
-    MatriculaPlanoSerializer, MatriculaTurmaSerializer )
+    PlanosClienteSerializer, TurmasClienteSerializer )
 
 from gym_app.models import (
     Modalidade, Turma, Plano, MatriculaPlano, MatriculaTurma, Exame, Cliente )
@@ -29,27 +29,21 @@ class ExameViewSet(viewsets.ModelViewSet):
         return Exame.objects.filter(cliente=cliente)
 
 class MatriculaPlanoViewSet(viewsets.ModelViewSet):
-    serializer_class = PlanoSerializer
+    serializer_class = PlanosClienteSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         cliente = Cliente.objects.get(user=self.request.user)
-
-        planos_id = list(MatriculaPlano.objects.filter(cliente=cliente).values_list('plano_id', flat=True))
-        planos = Plano.objects.filter(id__in=planos_id)
-
+        planos = MatriculaPlano.objects.filter(cliente=cliente).values('id', 'plano__modalidade__tipo', 'plano__vezes_por_semana', 'plano__tipo', 'plano__valor')
         return planos
 
 class MatriculaTurmaViewSet(viewsets.ModelViewSet):
-    serializer_class = TurmaSerializer
+    serializer_class = TurmasClienteSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         cliente = Cliente.objects.get(user=self.request.user)
-
-        turmas_id = list(MatriculaTurma.objects.filter(cliente=cliente).values_list('turma_id', flat=True))
-        turmas = Turma.objects.filter(id__in=turmas_id)
-
+        turmas = MatriculaTurma.objects.filter(cliente=cliente).values('id', 'turma__modalidade__tipo', 'turma__dia', 'turma__horario')
         return turmas
 
 

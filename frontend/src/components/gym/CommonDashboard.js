@@ -7,9 +7,7 @@ class CommonDashboard extends Component {
   render() {
     return (
       <div>
-        <div id="accordion">
           <ModalidadeList />
-        </div>
       </div>
     );
   }

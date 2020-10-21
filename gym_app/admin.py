@@ -30,7 +30,7 @@ admin.site.register(User, MyUserAdmin)
 # Register your models here.
 from .models import (
     Cliente, Modalidade, Turma, Plano, MatriculaPlano,
-    MatriculaTurma, Exame
+    MatriculaTurma, Exame, Treino
 )
 
 
@@ -48,7 +48,23 @@ class MatriculaTurmaAdmin(admin.ModelAdmin):
             kwargs["queryset"] = Cliente.objects.filter(habilitado=True)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
+class TreinoAdmin(admin.ModelAdmin):
+    list_display = ('cliente', 'data', 'professor')
+    fieldsets = [
+        (None, { 'fields': [('cliente','segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo')] } ),
+    ]
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "cliente":
+            kwargs["queryset"] = Cliente.objects.filter(habilitado=True)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+        
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'professor', None) is None:
+            obj.professor = request.user
+        obj.save()
+
+admin.site.register(Treino,TreinoAdmin)
 admin.site.register(MatriculaTurma,MatriculaTurmaAdmin)
 admin.site.register(MatriculaPlano,MatriculaTurmaAdmin)
 admin.site.register(Cliente)

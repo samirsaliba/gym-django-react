@@ -136,6 +136,20 @@ class Exame(models.Model):
     def __str__(self):
         return "Exame do cliente: {}, Habilitado: {}, {}".format(self.cliente, self.habilitado, self.data)
 
+
+class Treino(models.Model):
+    cliente = models.ForeignKey(Cliente, related_name="treinos", on_delete=models.CASCADE)
+    professor = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    data = models.DateField(auto_now_add=True)
+    segunda = models.TextField()
+    terca = models.TextField()
+    quarta = models.TextField()
+    quinta = models.TextField()
+    sexta = models.TextField()
+    sabado = models.TextField()
+    domingo = models.TextField()
+
+
 # Apos (ou antes) criacao de um modelo, manda um sinal para esta funcao executar algum codigo
 # Ref https://dev.to/coderasha/create-advanced-user-sign-up-view-in-django-step-by-step-k9m
 # Nesta funcao, assim que um exame for cadastrado, se o resultado for positivo (habilitado)
