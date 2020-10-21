@@ -130,9 +130,10 @@ class Exame(models.Model):
     percentual_massa_magra = models.DecimalField(max_digits=4, decimal_places=2)
     imc = models.DecimalField(max_digits=3, decimal_places=1)
     habilitado = models.BooleanField()
+    data = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return "Exame do cliente: {}, Habilitado: {}".format(self.cliente, self.habilitado)
+        return "Exame do cliente: {}, Habilitado: {}, {}".format(self.cliente, self.habilitado, self.data)
 
 # Apos (ou antes) criacao de um modelo, manda um sinal para esta funcao executar algum codigo
 # Ref https://dev.to/coderasha/create-advanced-user-sign-up-view-in-django-step-by-step-k9m

@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -34,10 +33,26 @@ from .models import (
     MatriculaTurma, Exame
 )
 
+
+# As classes abaixo limitam as opcoes de cliente na hora de instanciar uma matricula
+# So exibe clientes ja 'habilitados' por um medico
+class MatriculaTurmaAdmin(admin.ModelAdmin):
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "cliente":
+            kwargs["queryset"] = Cliente.objects.filter(habilitado=True)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+class MatriculaTurmaAdmin(admin.ModelAdmin):
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "cliente":
+            kwargs["queryset"] = Cliente.objects.filter(habilitado=True)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+admin.site.register(MatriculaTurma,MatriculaTurmaAdmin)
+admin.site.register(MatriculaPlano,MatriculaTurmaAdmin)
 admin.site.register(Cliente)
 admin.site.register(Modalidade)
 admin.site.register(Turma)
 admin.site.register(Plano)
-admin.site.register(MatriculaPlano)
-admin.site.register(MatriculaTurma)
 admin.site.register(Exame)
