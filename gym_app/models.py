@@ -36,7 +36,8 @@ class Cliente(models.Model):
         return self.CPF
 
 class Modalidade(models.Model):
-    tipo = models.CharField(max_length=20, primary_key=True)
+    tipo = models.CharField(max_length=20)
+    descricao = models.TextField()
 
     def clean(self):
         self.tipo = self.tipo.capitalize()
