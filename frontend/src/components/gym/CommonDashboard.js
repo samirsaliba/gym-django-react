@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ModalidadeList from './ModalidadeList';
-import PlanosList from './PlanosList';
 import { Link } from 'react-router-dom';
 
 
@@ -10,7 +9,6 @@ class CommonDashboard extends Component {
       <div>
         <div id="accordion">
           <ModalidadeList />
-          <PlanosList />
         </div>
       </div>
     );

@@ -13,6 +13,8 @@ import PrivateRoute from './common/PrivateRoute';
 import { loadUser } from '../actions/auth';
 import CommonDashboard from './gym/CommonDashboard';
 
+import PlanosList from './gym/PlanosList';
+
 
 
 class App extends Component {
@@ -22,10 +24,6 @@ class App extends Component {
   
   render() {
     return (
-      // <Provider store={store}>
-      //   <Header />
-      //   <Dashboard />
-      // </Provider>
       <Provider store={store}>
         <Router history={history}>
           <Header />
@@ -33,6 +31,7 @@ class App extends Component {
             <PrivateRoute exact path='/' component={Dashboard} />
             <Route exact path='/common' component={CommonDashboard} />
             <Route exact path='/login' component={LoginForm} />
+            <Route exact path='/planos' component={PlanosList} />
           </Switch>
         </Router>
       </Provider>
