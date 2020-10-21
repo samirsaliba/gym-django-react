@@ -5,11 +5,10 @@ import { Field, reduxForm } from 'redux-form';
 import { login } from '../../actions/auth';
 
 class LoginForm extends Component {
-  renderField = ({ input, label, type, meta: { touched, error } }) => {
+  renderField = ({ input, type, placeholder, meta: { touched, error } }) => {
     return (
-      <div className={`field ${touched && error ? 'error' : ''}`}>
-        <label>{label}</label>
-        <input {...input} type={type} />
+      <div className={`${touched && error ? 'error' : ''}`}>
+        <input {...input} type={type} placeholder={placeholder} className='form-control' />
         {touched && error && (
           <span className='alert alert-danger'>{error}</span>
         )}
@@ -34,37 +33,37 @@ class LoginForm extends Component {
     if (this.props.isAuthenticated) {
       return <Redirect to='/' />;
     }
+
     return (
-      <div className=''>
-        <form
-          onSubmit={this.props.handleSubmit(this.onSubmit)}
-          className='form-group'
-        >
-          <Field
-            name='username'
-            type='text'
-            component={this.renderField}
-            label='Username'
-            className='form-control'
-          />
-          <Field
-            name='password'
-            type='password'
-            component={this.renderField}
-            label='Password'
-            className='form-control'
-          />
-          <Field
-            name='non_field_errors'
-            type='hidden'
-            component={this.hiddenField}
-            className='form-control alert alert-danger'
-          />
-          <button className='btn btn-primary'>Login</button>
-        </form>
-        <p>
-          Don't have an account? <Link to='/register'>Register</Link>
-        </p>
+      <div className='d-flex justify-content-center'>
+        <div className='col-md-4'>
+          <form
+            onSubmit={this.props.handleSubmit(this.onSubmit)}
+            className='form-signin'
+          >
+            <Field
+              name='username'
+              type='text'
+              component={this.renderField}
+              placeholder="Username"
+            />
+            <Field
+              name='password'
+              type='password'
+              component={this.renderField}
+              placeholder="Password"
+            />
+            <Field
+              name='non_field_errors'
+              type='hidden'
+              component={this.hiddenField}
+            />
+            <button className='btn btn-lg btn-primary btn-block'>Login</button>
+          </form>
+          <p>
+            Don't have an account? <Link to='/register'>Register</Link>
+          </p>
+        </div>
       </div>
     );
   }

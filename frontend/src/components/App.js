@@ -11,6 +11,7 @@ import history from '../history';
 import LoginForm from './auth/LoginForm';
 import PrivateRoute from './common/PrivateRoute';
 import { loadUser } from '../actions/auth';
+import CommonDashboard from './gym/CommonDashboard';
 
 
 
@@ -30,9 +31,7 @@ class App extends Component {
           <Header />
           <Switch>
             <PrivateRoute exact path='/' component={Dashboard} />
-            {/* <Route exact path='/' component={ExamesList} />
-            <Route exact path='/' component={MatriculaPlanosList} />
-            <Route exact path='/' component={MatriculaTurmasList} /> */}
+            <Route exact path='/common' component={CommonDashboard} />
             <Route exact path='/login' component={LoginForm} />
           </Switch>
         </Router>
@@ -49,3 +48,4 @@ ReactDOM.render(
 export {
   App
 }
+
