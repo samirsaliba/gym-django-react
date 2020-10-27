@@ -5,10 +5,11 @@ from gym_app.models import (
     Modalidade, Turma, Plano, Exame, MatriculaPlano, MatriculaTurma )
 
 
-class ModalidadeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Modalidade
-        fields = '__all__'
+class ModalidadeSerializer(serializers.Serializer):    
+    tipo = serializers.CharField(max_length=200)
+    descricao = serializers.CharField(max_length=200)
+    imagem = serializers.ImageField()
+    print(imagem)
 
 class TurmasClienteSerializer(serializers.Serializer):
     id = serializers.IntegerField()

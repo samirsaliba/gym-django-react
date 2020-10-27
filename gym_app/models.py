@@ -38,6 +38,7 @@ class Cliente(models.Model):
 class Modalidade(models.Model):
     tipo = models.CharField(max_length=20)
     descricao = models.TextField()
+    imagem = models.ImageField(upload_to='images/', default='default.jpg')
 
     def clean(self):
         self.tipo = self.tipo.capitalize()

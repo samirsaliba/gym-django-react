@@ -10,16 +10,16 @@ class ModalidadeList extends Component {
 
   render() {
     return (
-      this.props.modalidades.map(modalidade => (
-        <div className="card mb-3" key={'modalidade'+modalidade.tipo}>
+      this.props.modalidades.map(mod => (
+        <div className="card mb-3" key={'modalidade'+mod.tipo}>
           <div className="row no-gutters">
             <div className="col-md-4">
-              <img src="..." className="card-img" alt="..."></img>
+              <img src={mod.imagem} className="card-img" alt="..." height="100% "></img>
                 </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h5 className="card-title">{modalidade.tipo}</h5>
-                  <p className="card-text">{modalidade.descricao}</p>
+                  <h5 className="card-title">{mod.tipo}</h5>
+                  <p className="card-text">{mod.descricao}</p>
                 </div>
               </div>
             </div>
