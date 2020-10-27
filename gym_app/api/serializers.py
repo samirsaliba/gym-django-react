@@ -4,7 +4,7 @@ from rest_framework import serializers
 from gym_app.models import (
     Modalidade, Turma, Plano, Exame, MatriculaPlano, MatriculaTurma )
 
-
+        
 class ModalidadeSerializer(serializers.Serializer):    
     tipo = serializers.CharField(max_length=200)
     descricao = serializers.CharField(max_length=200)
@@ -30,12 +30,16 @@ class ExameSerializer(serializers.ModelSerializer):
         model = Exame
         fields = '__all__'
 
-class PlanoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Plano
-        fields = '__all__'
+class PlanoSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    modalidade = serializers.CharField(source='modalidade_id__tipo', max_length=20)
+    vezes_por_semana = serializers.IntegerField()
+    tipo = serializers.CharField(max_length=20)
+    valor = serializers.DecimalField(max_digits=6, decimal_places=2)
 
 class TurmaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turma
         fields = '__all__'
+
+        

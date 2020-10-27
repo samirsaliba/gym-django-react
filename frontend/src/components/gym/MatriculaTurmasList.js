@@ -13,23 +13,31 @@ class MatriculaTurmasList extends Component {
       <div>
         <div className="card">
           <div className="card-header" id="headingThree">
-            <h5 className="mb-0">
               <button className="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                Minhas Turmas
+                <h6 className="mb-0">Minhas Turmas</h6>
               </button>
-            </h5>
+              <span className="badge badge-primary badge-pill">{this.props.matricula_turmas.length}</span>
           </div>
           <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div className="card-body">
-              <ul className="list-group" >
-                {this.props.matricula_turmas.map(obj => (
-                <div key={'turma' + obj.id}>
-                  <li className="list-group-item" >{obj.turma__modalidade__tipo}</li>
-                  <li className="list-group-item">{obj.turma__dia}</li>
-                  <li className="list-group-item">{obj.turma__horario}</li>
-                  </div>  
-                ))}
-              </ul>
+              <table className='table table-hover'>
+                <thead>
+                  <tr>
+                    <th scope="col">Modalidade</th>
+                    <th scope="col">Dia</th>
+                    <th scope="col">Horário</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.props.matricula_turmas.map(obj => (
+                    <tr key={'plano'+obj.id}>
+                      <td>{obj.turma__modalidade__tipo}</td>
+                      <td>{obj.turma__dia}</td>
+                      <td>{obj.turma__horario}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

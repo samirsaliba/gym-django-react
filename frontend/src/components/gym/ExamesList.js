@@ -11,27 +11,41 @@ class ExameList extends Component {
   render() {
     return (
       <div className="card">
-        <div className="card-header" id="headingOne">
-          <h5 className="mb-0">
+        <div className="card-header " id="headingOne">
             <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Meus Exames
-                </button>
-          </h5>
+              <h6 className="mb-0">Meus Exames</h6>
+            </button>
+            <span className="badge badge-primary badge-pill ">{this.props.exames.length}</span>          
         </div>
 
         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordion">
           <div className="card-body">
-            {this.props.exames.map(exame => (
-              <ul className="list-group" key={'exame' + exame.id}>
-                <li className="list-group-item">{exame.massa}</li>
-                <li className="list-group-item">{exame.altura}</li>
-                <li className="list-group-item">{exame.pressao_sistolica}</li>
-                <li className="list-group-item">{exame.pressao_diastolica}</li>
-                <li className="list-group-item">{exame.percentual_gordura}</li>
-                <li className="list-group-item">{exame.percentual_massa_magra}</li>
-                <li className="list-group-item">{exame.imc}</li>
-              </ul>
-            ))}
+              <table className='table table-hover'>
+                <thead>
+                  <tr>
+                    <th scope="col">Massa</th>
+                    <th scope="col">Altura</th>
+                    <th scope="col">Pressão Sistólica</th>
+                    <th scope="col">Pressão Diastólica</th>
+                    <th scope="col">% Gordura</th>
+                    <th scope="col">% Massa Magra</th>
+                    <th scope="col">IMC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.props.exames.map(exame => (
+                    <tr key={'plano'+exame.id}>
+                      <td>{exame.massa}</td>
+                      <td>{exame.altura}</td>
+                      <td>{exame.pressao_sistolica}</td>
+                      <td>{exame.pressao_diastolica}</td>
+                      <td>{exame.percentual_gordura}</td>
+                      <td>{exame.percentual_massa_magra}</td>
+                      <td>{exame.imc}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
           </div>
         </div>
       </div>

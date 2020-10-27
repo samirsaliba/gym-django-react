@@ -12,22 +12,34 @@ class MatriculaPlanosList extends Component {
     return (
       <div className="card">
         <div className="card-header" id="headingTwo">
-          <h5 className="mb-0">
             <button className="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Meus Planos
-                </button>
-          </h5>
+              <h6 className="mb-0">Meus Planos</h6>
+            </button>
+            <span className="badge badge-primary badge-pill">{this.props.matricula_planos.length}</span>
+          
         </div>
         <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
           <div className="card-body">
-            {this.props.matricula_planos.map(obj => (
-              <ul className="list-group" key={'plano'+obj.id}>
-                <li className="list-group-item" >{obj.plano__modalidade__tipo}</li>
-                <li className="list-group-item">{obj.plano__vezes_por_semana}</li>
-                <li className="list-group-item">{obj.plano__tipo}</li>
-                <li className="list-group-item" >{obj.plano__valor}</li>
-              </ul>
-            ))}
+            <table className='table table-hover'>
+              <thead>
+                <tr>
+                  <th scope="col">Modalidade</th>
+                  <th scope="col">X por semana</th>
+                  <th scope="col">Pacote</th>
+                  <th scope="col">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.matricula_planos.map(obj => (
+                  <tr key={'plano'+obj.id}>
+                    <td>{obj.plano__modalidade__tipo}</td>
+                    <td>{obj.plano__vezes_por_semana}</td>
+                    <td>{obj.plano__tipo}</td>
+                    <td>{obj.plano__valor}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

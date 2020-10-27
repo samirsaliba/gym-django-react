@@ -12,7 +12,7 @@ class PlanosList extends Component {
   render() {
     return (
       <div className='d-flex justify-content-center'>
-        <table className='table'>
+        <table className='table table-hover'>
           <thead>
             <tr>
               <th scope="col">Modalidade</th>
