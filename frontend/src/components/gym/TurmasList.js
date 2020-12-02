@@ -1,11 +1,11 @@
 import { divide } from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPlanos } from '../../actions/gym';
+import { getTurmas } from '../../actions/gym';
 
-class PlanosList extends Component {
+class TurmasList extends Component {
   componentDidMount() {
-    this.props.getPlanos();
+    this.props.getTurmas();
   }
 
   render() {
@@ -15,18 +15,18 @@ class PlanosList extends Component {
           <thead>
             <tr>
               <th scope="col">Modalidade</th>
-              <th scope="col">X por semana</th>
-              <th scope="col">Pacote</th>
-              <th scope="col">Valor</th>
+              <th scope="col">Dia</th>
+              <th scope="col">Horario</th>
+              <th scope="col">Vagas</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.planos.map(plano => (
-              <tr key={plano.id}>
-                <td>{plano.modalidade}</td>
-                <td>{plano.vezes_por_semana}</td>
-                <td>{plano.tipo}</td>
-                <td>{plano.valor}</td>
+            {this.props.turmas.map(turma => (
+              <tr key={turma.id}>
+                <td>{turma.modalidade}</td>
+                <td>{turma.dia}</td>
+                <td>{turma.horario}</td>
+                <td>{turma.vagas}</td>
               </tr>
             ))}
           </tbody>
@@ -37,10 +37,10 @@ class PlanosList extends Component {
 }
 
 const mapStateToProps = state => ({
-  planos: Object.values(state.planos)
+  turmas: Object.values(state.turmas)
 });
 
 export default connect(
   mapStateToProps,
-  { getPlanos }
-)(PlanosList);
+  { getTurmas }
+)(TurmasList);

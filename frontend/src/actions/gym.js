@@ -27,6 +27,7 @@ export const addModalidade = formValues => async dispatch => {
 
 export const getTurmas = () => async dispatch => {
   const res = await axios.get('/api/turmas/');
+
   dispatch({
     type: GET_TURMAS,
     payload: res.data

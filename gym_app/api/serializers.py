@@ -9,7 +9,6 @@ class ModalidadeSerializer(serializers.Serializer):
     tipo = serializers.CharField(max_length=200)
     descricao = serializers.CharField(max_length=200)
     imagem = serializers.ImageField()
-    print(imagem)
 
 class TurmasClienteSerializer(serializers.Serializer):
     id = serializers.IntegerField()
@@ -38,8 +37,10 @@ class PlanoSerializer(serializers.Serializer):
     valor = serializers.DecimalField(max_digits=6, decimal_places=2)
 
 class TurmaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Turma
-        fields = '__all__'
+    id = serializers.IntegerField()
+    modalidade = serializers.CharField(source='modalidade_id__tipo', max_length=20)
+    dia = serializers.CharField(max_length=10)
+    horario = serializers.CharField(max_length=5)
+    vagas = serializers.IntegerField()
 
         

@@ -13,12 +13,10 @@ class ModalidadeViewSet(viewsets.ModelViewSet):
     serializer_class = ModalidadeSerializer
 
 class TurmaViewSet(viewsets.ModelViewSet):
-    queryset = Turma.objects.all()
+    queryset = Turma.objects.values('id', 'modalidade_id__tipo', 'dia','horario', 'vagas')
     serializer_class = TurmaSerializer
 
 class PlanoViewSet(viewsets.ModelViewSet):
-    #queryset2 = Plano.objects.all()
-    #print(queryset2)
     queryset = Plano.objects.values('id', 'modalidade_id__tipo', 'tipo','vezes_por_semana', 'valor')
     serializer_class = PlanoSerializer
 

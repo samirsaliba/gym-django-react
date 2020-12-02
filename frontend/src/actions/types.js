@@ -1,7 +1,7 @@
 
 export const GET_MODALIDADES = 'GET_MODALIDADES';
 export const ADD_MODALIDADE = 'ADD_MODALIDADE';
-export const GET_TURMAS = 'GET_TURMA';
+export const GET_TURMAS = 'GET_TURMAS';
 export const GET_PLANOS = 'GET_PLANOS';
 
 export const GET_EXAMES = 'GET_EXAMES';

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import ModalidadeList from './ModalidadeList';
+import ModalidadesList from './ModalidadesList';
 import { Link } from 'react-router-dom';
 
 
-class CommonDashboard extends Component {
+class Home extends Component {
   render() {
     return (
       <div>
-          <ModalidadeList />
+          <ModalidadesList />
       </div>
     );
   }
 }
 
-export default CommonDashboard;
+export default Home;
