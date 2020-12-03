@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,6 +30,8 @@ class Header extends Component {
           </ul>
         </div>
         <ul className="navbar-nav ml-auto">
+
+
           <li className="nav-item">
             <Link to='/login'><button className='btn btn-primary btn-block'>Login</button></Link>
           </li>
@@ -38,4 +41,6 @@ class Header extends Component {
   }
 }
 
+
 export default Header;
+

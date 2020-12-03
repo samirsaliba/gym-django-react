@@ -150,6 +150,11 @@ class Treino(models.Model):
     sabado = models.TextField()
     domingo = models.TextField()
 
+@receiver(post_save, sender=MatriculaTurma)
+def update_turma_signal(sender, instance, created, **kwargs):
+    turma = Turma.objects.get(id=instance.turma.id)
+    turma.vagas = turma.vagas - 1
+    turma.save()
 
 # Apos (ou antes) criacao de um modelo, manda um sinal para esta funcao executar algum codigo
 # Ref https://dev.to/coderasha/create-advanced-user-sign-up-view-in-django-step-by-step-k9m

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { reset } from 'redux-form';
 import history from '../history';
-import { 
+import {
   GET_MODALIDADES, ADD_MODALIDADE, GET_PLANOS, GET_TURMAS, GET_EXAMES, GET_MATRICULA_PLANOS, GET_MATRICULA_TURMAS
 } from './types';
 
@@ -27,7 +27,6 @@ export const addModalidade = formValues => async dispatch => {
 
 export const getTurmas = () => async dispatch => {
   const res = await axios.get('/api/turmas/');
-
   dispatch({
     type: GET_TURMAS,
     payload: res.data

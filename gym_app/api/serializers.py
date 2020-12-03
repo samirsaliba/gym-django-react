@@ -36,7 +36,7 @@ class PlanoSerializer(serializers.Serializer):
     tipo = serializers.CharField(max_length=20)
     valor = serializers.DecimalField(max_digits=6, decimal_places=2)
 
-class TurmaSerializer(serializers.ModelSerializer):
+class TurmaSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     modalidade = serializers.CharField(source='modalidade_id__tipo', max_length=20)
     dia = serializers.CharField(max_length=10)
